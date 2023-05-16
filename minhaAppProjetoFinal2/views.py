@@ -7,3 +7,13 @@ def login(request):
     email='jhonatan99ca@hotmail.com'
     return render(request, "minhaAppProjetoFinal2/login.html", {'nome':name, 'email':email})
 
+
+def cadastro(request):
+    name='Você pode me alterar na view.'
+    return render(request, "minhaAppProjetoFinal2/cadastro.html", {'nome':name})
+
+
+def perfil(request):
+    name='Você pode me alterar na view.'
+    return render(request, "minhaAppProjetoFinal2/perfil.html", {'nome':name})
+
