@@ -1,0 +1,216 @@
+<html>   
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 14px;
+        }
+
+        .fundo {
+          width: 100%;
+          height: 170%;
+          background:white;
+          position: absolute;
+          top: 0px;
+          opacity: 1;
+          left: 0px;
+          overflow: hidden;
+        }
+
+        .topo{
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 44px;
+            text-align: center;
+
+            color: white;
+        }
+
+        .v80_1836 {
+          width: 100%;
+          height: 100px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          background-color: rgba(216,128,36,1);
+
+          opacity: 1;
+          position: absolute;
+          top: 0px;
+          overflow: hidden;
+        }
+
+        .form{
+            position: absolute;
+            top:150px;
+            left: 50px;
+            width: 100%;
+        }
+
+
+        .fonte {
+          width: 250px;
+          color: black;
+          font-family: 'Open Sans';
+          font-weight: 'Light';
+          font-size: 20px;
+          opacity: 1;
+          text-align: center;
+          position: relative;
+          left: 23%;
+          top: 3%;
+        }
+
+        .enviar {
+          position: absolute;
+          width: 100px;
+          left: 67%;
+          top: 15%;
+          font-family: 'Open Sans';
+          font-weight: 'Light';
+          font-size: 15px;
+          text-align: center;
+        }
+
+        .busca {
+          width: 525px;
+          height: 50px;
+          color: rgba(0,0,0,1);
+          position: relative;
+          top: 37%;
+          left: 30%;
+          font-family: 'Open Sans';
+          font-weight: 'Light';
+          font-size: 40px;
+          opacity: 1;
+          text-align: center;
+        }
+
+        .quadrado {
+          width: 450px;
+          height: 230px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          background-color: #F4B970;
+          border-radius: 10px;
+          opacity: 1;
+          position: absolute;
+          top: 250px;
+          left: 550px;
+          overflow: hidden;
+        }
+        .quadrado1 {
+          width: 450px;
+          height: 250px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          background-color: #F4B970;
+          border-radius: 10px;
+          opacity: 1;
+          position: absolute;
+          top: 530px;
+          left: 550px;
+          overflow: hidden;
+        }
+        .quadrado2 {
+          width: 450px;
+          height: 270px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          background-color: #F4B970;
+          border-radius: 10px;
+          opacity: 1;
+          position: absolute;
+          top: 830px;
+          left: 550px;
+          overflow: hidden;
+        }
+        .linha{
+             border:1px solid rgba(0, 0, 0, 1);
+        }
+        .img{
+            position: absolute;
+            width: 70px;
+            height: 45px;
+            left: 20px; 
+            top: 20px;
+        }
+        .img1{
+            position: absolute;
+            width: 70px;
+            height: 65px;
+            left: 20px; 
+            top: 10px;
+        }
+        .img2{
+            position: absolute;
+            width: 70px;
+            height: 75px;
+            left: 20px; 
+            top: 20px;
+        }
+    </style>
+    <head>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet" />
+        
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'minhaAppProjetoFinal2/css/cadastro.css' %}">
+        <title>Gastronomia Qualificada</title>
+    </head>
+    <body>
+        <div class="fundo">
+            <div class="v80_1836">
+                <p class="topo">MEUS RESTAURANTES</p>
+            </div>
+            <form class="form">
+                  <input class="busca" type="text" id="busca" name="busca" value="Busque o seu restaurante"><br><br><br>
+                  <button class="enviar" type="submit" value="Enviar">Buscar</button>
+             </form>
+            <div class="quadrado">
+                <img class="img" src="https://proxy-us-west2.goorm.io/service/645d36c6b88f1303c4525121_d6JMiMLSdFSLYg4SjgC.run-us-west2.goorm.io/9080/file/load/logo-bobs%201.png?path=d29ya3NwYWNlJTJGUHJvamV0b0ZpbmFsMiUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRnRlbXBsYXRlcyUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRmltZyUyRmxvZ28tYm9icyUyMDEucG5n&docker_id=d6JMiMLSdFSLYg4SjgC&secure_session_id=JIJ6YX44fb-bHUVqN_X40N4bgWEjLxA-">
+                <p class="fonte">Bob’s - Barata Ribeiro</p>
+                <br>
+                <div class="linha">
+                </div>
+                <p class="fonte">Gerente - Lucca Rocha</p>
+                <div class="linha">
+                </div>
+                <p class="fonte">Saiba Mais</p>
+            </div>
+            
+            <div class="quadrado1">
+                <img class="img1" src="https://proxy-us-west2.goorm.io/service/645d36c6b88f1303c4525121_d6JMiMLSdFSLYg4SjgC.run-us-west2.goorm.io/9080/file/load/Logo_Madero%201.png?path=d29ya3NwYWNlJTJGUHJvamV0b0ZpbmFsMiUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRnRlbXBsYXRlcyUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRmltZyUyRkxvZ29fTWFkZXJvJTIwMS5wbmc=&docker_id=d6JMiMLSdFSLYg4SjgC&secure_session_id=JIJ6YX44fb-bHUVqN_X40N4bgWEjLxA-">
+                <p class="fonte">Madero Shopping Leblon</p>
+                <br>
+                <div class="linha">
+                </div>
+                <p class="fonte">Gerente - Rodrigo Kauer</p>
+                <div class="linha">
+                </div>
+                <p class="fonte">Saiba Mais</p>
+            </div>
+            
+            <div class="quadrado2">
+                <img class="img2" src="https://proxy-us-west2.goorm.io/service/645d36c6b88f1303c4525121_d6JMiMLSdFSLYg4SjgC.run-us-west2.goorm.io/9080/file/load/images%201.png?path=d29ya3NwYWNlJTJGUHJvamV0b0ZpbmFsMiUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRnRlbXBsYXRlcyUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRmltZyUyRmltYWdlcyUyMDEucG5n&docker_id=d6JMiMLSdFSLYg4SjgC&secure_session_id=JIJ6YX44fb-bHUVqN_X40N4bgWEjLxA-">
+                <p class="fonte">T.T. Burguer Barra da Tijuca</p>
+                <br>
+                <div class="linha">
+                </div>
+                <p class="fonte">Gerente - Leonardo Trote</p>
+                <div class="linha">
+                </div>
+                <p class="fonte">Saiba Mais</p>
+            </div>
+            
+        </div>
+    </body>
+</html>
