@@ -1,0 +1,142 @@
+<html>   
+    <style>
+        * {
+    box-sizing: border-box;
+}
+        
+body {
+    font-size: 14px;
+}
+
+.fundo {
+  width: 100%;
+  height: 120%;
+  background:white;
+  position: absolute;
+  top: 0px;
+  opacity: 1;
+  left: 0px;
+  overflow: hidden;
+}
+
+.topo{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-align: center;
+
+    color: white;
+}
+
+.v80_1836 {
+  width: 100%;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: rgba(216,128,36,1);
+
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+
+.form{
+    position: absolute;
+    top:150px;
+    left: 40%;
+}
+
+.esqueceulogin{
+    position: absolute;
+    left: 170px;
+    top: 115px;
+    color:  black;
+}
+
+.esqueceusenha{
+    position: absolute;
+    left: 170px;
+    top: 170px;
+    color:  black;
+}
+
+.cadastre{
+    position: absolute;
+    left: 125px;
+    top: 235px;
+    color:  black;
+    font-style: bold;
+}
+
+.fonte {
+  width: 180px;
+  color: black;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 15px;
+  opacity: 1;
+ 
+}
+
+.enviar {
+  position: absolute;
+  width: 100px;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 15px;
+  text-align: center;
+}
+
+.nome {
+  width: 225px;
+  color: rgba(0,0,0,1);
+  position: relative;
+  top: 37%;
+  left: 33%;
+  font-family: 'Kurale';
+  font-weight: 'Regular';
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+    </style>
+    <head>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet" />
+        
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'minhaAppProjetoFinal2/css/cadastro.css' %}">
+        <title>Gastronomia Qualificada</title>
+    </head>
+    <body>
+        <div class="fundo">
+            <div class="v80_1836">
+                <p class="topo">CADASTRO DE EVENTO EXTERNO</p>
+            </div>
+            <form class="form">
+                  <p class="fonte">Id Evento Externo</p>
+                  <p class="fonte">0001</p><br>
+                  <label class="fonte" for="date">Data do Evento Externo </label><br>
+                  <input type="date" id="date" name="date"><br><br><br>
+                  <label class="fonte" for="hour">Horário do Evento Externo</label><br>
+                  <input type="time" id="hour" name="hour"><br><br><br>
+                  <label class="fonte" for="road">Rua Onde Ocorreu o Evento Externo</label><br>
+                  <input type="text" id="road" name="road"><br><br><br>
+                  <label class="fonte" for="number">Número da Rua Onde Ocorreu o Evento Externo</label><br>
+                  <input type="number" id="number" name="number"><br><br><br>
+                  <label class="fonte" for="neighborhood">Bairro Onde Ocorreu o Evento Externo </label><br>
+                  <input type="text" id="neighborhood" name="neighborhood"><br><br><br>
+                  <label class="fonte" for="city">Cidade Onde Ocorreu o Evento Externo</label><br>
+                  <input type="text" id="city" name="city"><br><br><br>
+                  <label class="fonte" for="comments">Comentários Adicionais Sobre o Evento Externo</label><br>
+                  <input type="text" id="comments" name="comments"><br><br><br>
+                  <button class="enviar" type="submit" value="Enviar">Enviar</button>
+             </form>
+        </div>
+    </body>
+</html>
