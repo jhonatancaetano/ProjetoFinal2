@@ -17,3 +17,13 @@ def perfil(request):
     name='Você pode me alterar na view.'
     return render(request, "minhaAppProjetoFinal2/perfil.html", {'nome':name})
 
+
+def meusrestaurantes(request):
+    name='Você pode me alterar na view.'
+    return render(request, "minhaAppProjetoFinal2/meusrestaurantes.html", {'nome':name})
+
+
+def cadastroeventoexterno(request):
+    name='Você pode me alterar na view.'
+    return render(request, "minhaAppProjetoFinal2/cadastroeventoexterno.html", {'nome':name})
+

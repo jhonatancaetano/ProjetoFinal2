@@ -1,137 +1,149 @@
-<html>
+{% load static %}
+<html>  
     <style>
         * {
-          box-sizing: border-box;
-        }
-        body {
-          font-size: 14px;
-        }
-        .fundo {
-          width: 100%;
-          height: 100%;
-          background: rgba(216,128,36,1);
-          position: absolute;
-          top: 0px;
-          opacity: 1;
-          left: 0px;
-          overflow: hidden;
-        }
-        .login{
-            font-family: 'Open Sans';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 32px;
-            line-height: 44px;
-            text-align: center;
+  box-sizing: border-box;
+}
 
-            color: white;
-        }
-        .quadrado {
-          width: 450px;
-          height: 300px;
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: cover;
-          background-color: #F4B970;
-          border-radius: 10px;
-          opacity: 1;
-          position: absolute;
-          top: 350px;
-          left: 500px;
-          overflow: hidden;
-        }
-        .form{
-            position: absolute;
-            top:100px;
-            left: 110px;
-        }
-        .esqueceulogin{
-            position: absolute;
-            left: 170px;
-            top: 115px;
-            color:  black;
-        }
-        .esqueceusenha{
-            position: absolute;
-            left: 170px;
-            top: 170px;
-            color:  black;
-        }
-        .cadastre{
-            position: absolute;
-            left: 125px;
-            top: 235px;
-            color:  black;
-            font-style: bold;
-        }
-        .fonte {
-          width: 52px;
-          color: white;
-          font-family: 'Open Sans';
-          font-weight: 'Light';
-          font-size: 15px;
-          opacity: 1;
-          text-align: center;
-        }
-        .enviar {
-          position: absolute;
-          left: 65px;
-          width: 100px;
-          font-family: 'Open Sans';
-          font-weight: 'Light';
-          font-size: 15px;
-          text-align: center;
-        }
-        .nome {
-          width: 225px;
-          color: rgba(0,0,0,1);
-          position: relative;
-          top: 37%;
-          left: 33%;
-          font-family: 'Kurale';
-          font-weight: 'Regular';
-          font-size: 40px;
-          opacity: 1;
-          text-align: center;
-        }
-        .logo {
-          width: 126px;
-          height: 145px;
-          background: url("https://proxy-us-west2.goorm.io/service/645d36c6b88f1303c4525121_d6JMiMLSdFSLYg4SjgC.run-us-west2.goorm.io/9080/file/load/v748_2.png?path=d29ya3NwYWNlJTJGUHJvamV0b0ZpbmFsMiUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRnRlbXBsYXRlcyUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRmltZyUyRnY3NDhfMi5wbmc=&docker_id=d6JMiMLSdFSLYg4SjgC&secure_session_id=oNzGB14jqsZ5BGlTNBOHwMh_DzVHnl6K");
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: cover;
-          opacity: 1;
-          position: absolute;
-          top: 100px;
-          left: 43%;
-          overflow: hidden;
-        }
-        </style>
-    
-        <head>
-            <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-            <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet" />
-            <title>Gastronomia Qualificada</title>
-        </head>
-        <body>
-            <div class="fundo">
-                <div class="quadrado">
-                    <p class="login">LOGIN</p>
-                    <form class="form">
-                      <label class="fonte" for="email">Email:</label>
-                      <input type="text" id="email" name="email"><br><br><br>
-                      <label class="fonte" for="password">Senha:</label>
-                      <input type="password" id="password" name="password"><br><br><br>
-                      <button class="enviar" type="submit" value="Enviar">Enviar</button>
-                    </form>
-                    <p class="esqueceulogin">Esqueceu seu login?</p>
-                    <p class="esqueceusenha">Esqueceu sua senha?</p>
-                    <a href="https://projetofinal-xygva.run-us-west2.goorm.site/minhaAppProjetoFinal2/cadastro/"><p class="cadastre">Não tem conta? CASDASTRE-SE!</p></a>
-                </div>
-                <span class="nome">Gastronomia Qualificada</span>
-                <div class="logo">
-                </div>
+body {
+  font-size: 14px;
+}
+
+.fundo {
+  width: 100%;
+  height: 100%;
+  background: rgba(216,128,36,1);
+  position: absolute;
+  top: 0px;
+  opacity: 1;
+  left: 0px;
+  overflow: hidden;
+}
+
+.login{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-align: center;
+
+    color: white;
+}
+
+.quadrado {
+  width: 450px;
+  height: 300px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #F4B970;
+  border-radius: 10px;
+  opacity: 1;
+  position: absolute;
+  top: 350px;
+  left: 500px;
+  overflow: hidden;
+}
+
+.form{
+    position: absolute;
+    top:100px;
+    left: 110px;
+}
+
+.esqueceulogin{
+    position: absolute;
+    left: 170px;
+    top: 115px;
+    color:  black;
+}
+.esqueceusenha{
+    position: absolute;
+    left: 170px;
+    top: 170px;
+    color:  black;
+}
+
+.cadastre{
+    position: absolute;
+    left: 125px;
+    top: 235px;
+    color:  black;
+    font-style: bold;
+}
+
+.fonte {
+  width: 52px;
+  color: white;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 15px;
+  opacity: 1;
+  text-align: center;
+}
+
+.enviar {
+  position: absolute;
+  left: 65px;
+  width: 100px;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 15px;
+  text-align: center;
+}
+
+.nome {
+  width: 225px;
+  color: rgba(0,0,0,1);
+  position: relative;
+  top: 37%;
+  left: 33%;
+  font-family: 'Kurale';
+  font-weight: 'Regular';
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+
+.logo {
+  width: 126px;
+  height: 145px;
+  background: url("https://proxy-us-west2.goorm.io/service/645d36c6b88f1303c4525121_d6JMiMLSdFSLYg4SjgC.run-us-west2.goorm.io/9080/file/load/v748_2.png?path=d29ya3NwYWNlJTJGUHJvamV0b0ZpbmFsMiUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRnRlbXBsYXRlcyUyRm1pbmhhQXBwUHJvamV0b0ZpbmFsMiUyRmltZyUyRnY3NDhfMi5wbmc=&docker_id=d6JMiMLSdFSLYg4SjgC&secure_session_id=oNzGB14jqsZ5BGlTNBOHwMh_DzVHnl6K");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 100px;
+  left: 43%;
+  overflow: hidden;
+}
+    </style>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'meucss.css' %}">
+        <title>Gastronomia Qualificada</title>
+    </head>
+    <body>
+        <div class="fundo">
+            <div class="quadrado">
+                <p class="login">LOGIN</p>
+                <form class="form">
+                  <label class="fonte" for="email">Email:</label>
+                  <input type="text" id="email" name="email"><br><br><br>
+                  <label class="fonte" for="password">Senha:</label>
+                  <input type="password" id="password" name="password"><br><br><br>
+                  <button class="enviar" type="submit" value="Enviar">Enviar</button>
+                </form>
+                <p class="esqueceulogin">Esqueceu seu login?</p>
+                <p class="esqueceusenha">Esqueceu sua senha?</p>
+                <a href="https://projetofinal-xygva.run-us-west2.goorm.site/minhaAppProjetoFinal2/cadastro/"><p class="cadastre">Não tem conta? CASDASTRE-SE!</p></a>
             </div>
-        </body>
-    </html>
+            <span class="nome">Gastronomia Qualificada</span>
+            <div class="logo">
+            </div>
+        </div>
+    </body>
+</html>
