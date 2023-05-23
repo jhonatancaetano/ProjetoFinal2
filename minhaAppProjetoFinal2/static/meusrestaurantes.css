@@ -1,0 +1,156 @@
+ * {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+}
+
+.fundo {
+  width: 100%;
+  height: 170%;
+  background:white;
+  position: absolute;
+  top: 0px;
+  opacity: 1;
+  left: 0px;
+  overflow: hidden;
+}
+
+.topo{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-align: center;
+
+    color: white;
+}
+
+.v80_1836 {
+  width: 100%;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: rgba(216,128,36,1);
+
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+
+.form{
+    position: absolute;
+    top:150px;
+    left: 50px;
+    width: 100%;
+}
+
+
+.fonte {
+  width: 250px;
+  color: black;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 20px;
+  opacity: 1;
+  text-align: center;
+  position: relative;
+  left: 23%;
+  top: 3%;
+}
+
+.enviar {
+  position: absolute;
+  width: 100px;
+  left: 67%;
+  top: 15%;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 15px;
+  text-align: center;
+}
+
+.busca {
+  width: 525px;
+  height: 50px;
+  color: rgba(0,0,0,1);
+  position: relative;
+  top: 37%;
+  left: 30%;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
+
+.quadrado {
+  width: 450px;
+  height: 230px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #F4B970;
+  border-radius: 10px;
+  opacity: 1;
+  position: absolute;
+  top: 250px;
+  left: 550px;
+  overflow: hidden;
+}
+.quadrado1 {
+  width: 450px;
+  height: 250px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #F4B970;
+  border-radius: 10px;
+  opacity: 1;
+  position: absolute;
+  top: 530px;
+  left: 550px;
+  overflow: hidden;
+}
+.quadrado2 {
+  width: 450px;
+  height: 270px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: #F4B970;
+  border-radius: 10px;
+  opacity: 1;
+  position: absolute;
+  top: 830px;
+  left: 550px;
+  overflow: hidden;
+}
+.linha{
+     border:1px solid rgba(0, 0, 0, 1);
+}
+.img{
+    position: absolute;
+    width: 70px;
+    height: 45px;
+    left: 20px; 
+    top: 20px;
+}
+.img1{
+    position: absolute;
+    width: 70px;
+    height: 65px;
+    left: 20px; 
+    top: 10px;
+}
+.img2{
+    position: absolute;
+    width: 70px;
+    height: 75px;
+    left: 20px; 
+    top: 20px;
+}
