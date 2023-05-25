@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+        
+body {
+    font-size: 14px;
+}
+
+.fundo {
+  width: 100%;
+  height: 100%;
+  background:white;
+  position: absolute;
+  top: 0px;
+  opacity: 1;
+  left: 0px;
+  overflow: hidden;
+}
+
+.topo{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+    text-align: center;
+
+    color: white;
+}
+
+.v80_1836 {
+  width: 100%;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-color: rgba(216,128,36,1);
+
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+
+.form{
+    position: absolute;
+    top:150px;
+    left: 50px;
+}
+
+.esqueceulogin{
+    position: absolute;
+    left: 170px;
+    top: 115px;
+    color:  black;
+}
+
+.esqueceusenha{
+    position: absolute;
+    left: 170px;
+    top: 170px;
+    color:  black;
+}
+
+.cadastre{
+    position: absolute;
+    left: 125px;
+    top: 235px;
+    color:  black;
+    font-style: bold;
+}
+
+.fonte {
+  width: 80px;
+  color: black;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 15px;
+  opacity: 1;
+  text-align: left;
+}
+
+.enviar {
+  position: absolute;
+  width: 100px;
+  font-family: 'Open Sans';
+  font-weight: 'Light';
+  font-size: 15px;
+  text-align: center;
+}
+
+.nome {
+  width: 225px;
+  color: rgba(0,0,0,1);
+  position: relative;
+  top: 37%;
+  left: 33%;
+  font-family: 'Kurale';
+  font-weight: 'Regular';
+  font-size: 40px;
+  opacity: 1;
+  text-align: center;
+}
