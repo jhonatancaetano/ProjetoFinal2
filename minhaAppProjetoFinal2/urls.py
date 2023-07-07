@@ -9,4 +9,6 @@ urlpatterns = [
 	url(r'^perfil/', views.perfil, name="perfil"),
 	url(r'^meusrestaurantes/', views.meusrestaurantes, name="meusrestaurantes"),
 	url(r'^cadastroeventoexterno/', views.cadastroeventoexterno, name="cadastroeventoexterno"),
+	url(r'^buscarusuarios/', views.buscarusuarios, name="buscarusuarios"),
+	url(r'^inserePostagem/', views.inserePostagem, name="inserePostagem"),
 ]

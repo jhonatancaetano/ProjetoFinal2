@@ -11,7 +11,7 @@
             <div class="v80_1836">
                 <p class="topo">CADASTRO DE EVENTO EXTERNO</p>
             </div>
-            <form class="form">
+            <!--<form class="form">
                   <p class="fonte">Id Evento Externo</p>
                   <p class="fonte">0001</p><br>
                   <label class="fonte" for="date">Data do Evento Externo </label><br>
@@ -29,7 +29,12 @@
                   <label class="fonte" for="comments">Comentários Adicionais Sobre o Evento Externo</label><br>
                   <input type="text" id="comments" name="comments"><br><br><br>
                   <button class="enviar" type="submit" value="Enviar">Enviar</button>
-             </form>
+             </form>-->
+            <form method="POST" class="form" >
+                 {% csrf_token %}
+                {{formulario.as_p}}
+                <input type="submit" value="Salvar"/>
+            </form>
         </div>
     </body>
 </html>

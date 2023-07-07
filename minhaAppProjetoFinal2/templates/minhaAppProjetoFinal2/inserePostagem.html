@@ -1,0 +1,9 @@
+<html>
+	<body>
+        <form method="POST">
+            {% csrf_token %}
+            {{formulario.as_p}}
+            <input type="submit" value="Salvar"/>
+        </form>
+	</body>
+<html>

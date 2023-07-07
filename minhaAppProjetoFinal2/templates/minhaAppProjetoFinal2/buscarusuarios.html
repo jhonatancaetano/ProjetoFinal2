@@ -1,0 +1,27 @@
+<html>
+	<body>
+        <h2>
+            {{nome}}
+        </h2>
+		
+		<br><br>
+		<!--{% for item in lista%}
+            <b>{{item.titulo}}</b><br>
+            {{item.texto}}<br>
+            {{item.data}}<br><br><br>
+        {% endfor %}-->
+        
+        {% for item in listaEventoExterno%}
+            <b>{{item.id}}</b><br>
+            {{item.dataEvento}}<br>
+            {{item.horaEvento}}<br>
+            {{item.rua}}<br>
+            {{item.numero}}<br>
+            {{item.bairro}}<br>
+            {{item.cidade}}<br>
+            {{item.descricao}}<br><br>
+        {% endfor %}
+        
+       
+	</body>
+<html>
