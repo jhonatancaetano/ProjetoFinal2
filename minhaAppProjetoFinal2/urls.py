@@ -11,4 +11,13 @@ urlpatterns = [
 	url(r'^cadastroeventoexterno/', views.cadastroeventoexterno, name="cadastroeventoexterno"),
 	url(r'^buscarusuarios/', views.buscarusuarios, name="buscarusuarios"),
 	url(r'^inserePostagem/', views.inserePostagem, name="inserePostagem"),
+	url(r'^cadastroincidenteinterno/', views.cadastroincidenteinterno, name="cadastroincidenteinterno"),
+	url(r'^lotacao/', views.lotacao, name="lotacao"),
+	url(r'^comentarios/', views.comentarios, name="comentarios"),
+	url(r'^recomendacao/', views.recomendacao, name="recomendacao"),
+	url(r'^exibirEventoExterno/', views.exibirEventoExterno, name="exibirEventoExterno"),
+	url(r'^exibirincidenteinterno/', views.exibirincidenteinterno, name="exibirincidenteinterno"),
+	url(r'^exibirlotacao/', views.exibirlotacao, name="exibirlotacao"),
+	url(r'^exibirRecomendacao/', views.exibirRecomendacao, name="exibirRecomendacao"),
+	url(r'^exibirComentario/', views.exibirComentario, name="exibirComentario"),
 ]

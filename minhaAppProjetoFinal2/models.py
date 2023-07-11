@@ -88,8 +88,8 @@ class ItensDeConsumo(models.Model):
     idItem = models.AutoField(primary_key=True)
     nomeItem = models.TextField()
     precoItem = models.FloatField()
-    idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
-    idClassificacao = models.ForeignKey("ClassificacaoDoItem", on_delete=models.CASCADE)
+    #idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
+    #idClassificacao = models.ForeignKey("ClassificacaoDoItem", on_delete=models.CASCADE)
     def __str__(self):
         return self.idItem
 
@@ -127,13 +127,13 @@ class NivelDeLotacao(models.Model):
 
 class Lotacao(models.Model):
     idLotacao = models.AutoField(primary_key=True)
+    dia = models.DateField()
     hora = models.TimeField()
-    dia = models.DateTimeField()
     faixaHoraria = models.DateTimeField()
-    idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
-    idNivel = models.ForeignKey("NivelDeLotacao", on_delete=models.CASCADE)
-    idGerente = models.ForeignKey("Gerente", on_delete=models.CASCADE)
-    idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
+    #idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    #idNivel = models.ForeignKey("NivelDeLotacao", on_delete=models.CASCADE)
+    #idGerente = models.ForeignKey("Gerente", on_delete=models.CASCADE)
+    #idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
     def __str__(self):
         return self.idLotacao
 
@@ -145,14 +145,14 @@ class TipoDeIncidenteInterno(models.Model):
 
 class IncidenteInterno(models.Model):
     idIncidente = models.AutoField(primary_key=True)
-    descricao = models.TextField()
     data = models.DateField()
     hora = models.TimeField()
     local = models.TextField()
-    idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
-    idTipoIncidente = models.ForeignKey("TipoDeIncidenteInterno", on_delete=models.CASCADE)
-    idGerente = models.ForeignKey("Gerente", on_delete=models.CASCADE)
-    idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    descricao = models.TextField()
+    #idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
+    #idTipoIncidente = models.ForeignKey("TipoDeIncidenteInterno", on_delete=models.CASCADE)
+    #idGerente = models.ForeignKey("Gerente", on_delete=models.CASCADE)
+    #idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
     def __str__(self):
         return self.idIncidente
 
@@ -172,11 +172,11 @@ class EventoExterno(models.Model):
 
 class Recomendacao(models.Model):
     idRecomendacao = models.AutoField(primary_key=True)
-    texto = models.TextField()
     data = models.DateField()
     hora = models.TimeField()
-    idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
-    idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    texto = models.TextField()
+    #idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
+    #idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
     def __str__(self):
         return self.idRecomendacao
 
