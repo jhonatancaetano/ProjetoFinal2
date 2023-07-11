@@ -1,0 +1,16 @@
+<html>
+	<body>
+        <h2>
+            {{nome}}
+        </h2>
+		
+		<br><br>
+		 {% for item in listaComentario%}
+            <b>{{item.id}}</b><br>
+            {{item.data}}<br>
+            {{item.hora}}<br>
+            {{item.conteudo}}<br>
+            <br><br>
+        {% endfor %}
+	</body>
+<html>
