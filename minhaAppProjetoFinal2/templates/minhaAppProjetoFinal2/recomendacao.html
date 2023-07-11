@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'recomendacao.css' %}">
+        <title>Gastronomia Qualificada</title>
+    </head>
+    <body>
+        <div class="fundo">
+            <div class="v80_1836">
+                <p class="topo">CADASTRO DE RECOMENDAÇÃO</p>
+            </div>
+		<form method="POST" class="form" >
+            {% csrf_token %}
+            {{formulario.as_p}}
+            <input type="submit" value="Salvar"/>
+        </form>
+        </div>
+	</body>
+<html>
