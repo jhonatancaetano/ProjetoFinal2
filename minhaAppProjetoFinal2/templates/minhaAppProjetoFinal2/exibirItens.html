@@ -1,0 +1,25 @@
+<html>
+	<body>
+		<form method="POST">
+          {% csrf_token %}
+          <label for="filial">Selecione a filial:</label>
+          <select id="filial" name="idFilial">
+            {% for filial in filiais %}
+              <option value="{{filial.idFilial}}">{{ filial.idFilial }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit">Exibir Itens de Consumo</button>
+        </form>
+
+        {% if itens_consumo %}
+          <h2>Itens de Consumo da Filial Selecionada:</h2>
+          <ul>
+            {% for item in itens_consumo %}
+              <li>{{ item.nomeItem }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>Nenhum item de consumo encontrado.</p>
+        {% endif %}
+	</body>
+<html>

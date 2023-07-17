@@ -1,17 +1,6 @@
-from django.shortcuts import render
-from .models import EventoExterno
-from .models import Gerente
-from .models import IncidenteInterno
-from .models import Lotacao
-from .models import Recomendacao
-from .models import ItensDeConsumo
-from .models import Comentario
-from .forms import formPostagemCadastroEventoExterno
-from .forms import formPostagemCadastroIncidenteInterno
-from .forms import formPostagemCadastroLotacao
-from .forms import formPostagemCadastroRecomendacao
-from .forms import formPostagemCadastroIntensDeConsumo
-from .forms import formPostagemCadastroComentario
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import *
+from .forms import *
 
 # Create your views here.
 
@@ -19,7 +8,6 @@ def login(request):
     name = 'Você pode me alterar na view.'
     email = 'jhonatan99ca@hotmail.com'
     return render(request, "minhaAppProjetoFinal2/login.html", {'nome': name, 'email': email})
-
 
 def cadastro(request):
     name = 'Você pode me alterar na view.'
@@ -29,11 +17,9 @@ def perfil(request):
     name = 'Você pode me alterar na view.'
     return render(request, "minhaAppProjetoFinal2/perfil.html", {'nome': name})
 
-
 def meusrestaurantes(request):
     name = 'Você pode me alterar na view.'
     return render(request, "minhaAppProjetoFinal2/meusrestaurantes.html", {'nome': name})
-
 
 def cadastroeventoexterno(request):
     if request.POST:
@@ -101,61 +87,16 @@ def cadastroincidenteinterno(request):
     if request.POST:
         form = formPostagemCadastroIncidenteInterno(request.POST)
         if form.is_valid():
-            #idEvento = form.cleaned_data['idEvento']
-            data = form.cleaned_data['data']
-            hora = form.cleaned_data['hora']
-            local = form.cleaned_data['local']
-            desc = form.cleaned_data['descricao']
-            #idGerente = form.cleaned_data['idGerente']
-            #idUsuario  = form.cleaned_data['idUsuario']
-            #idG = Gerente.objects.get(id=idGerente)
-
-            post = IncidenteInterno()
-
-            #post.idEvento = idEvento
-            #post.idEvento = idG
-            post.data = data
-            post.hora = hora
-            post.local = local
-            post.descricao = desc
-
-            #post.idGerente = idGerente
-            #post.idUsuario = idUsuario
-
-            post.save()
+            form.save()
 
     formularioIncidenteInterno = formPostagemCadastroIncidenteInterno()
     return render(request, "minhaAppProjetoFinal2/cadastroincidenteinterno.html",{'formulario': formularioIncidenteInterno})
-
 
 def lotacao(request):
     if request.POST:
         form = formPostagemCadastroLotacao(request.POST)
         if form.is_valid():
-            #idLotacao = form.cleaned_data['idLotacao']
-            data = form.cleaned_data['dia']
-            hora = form.cleaned_data['hora']
-            faixa = form.cleaned_data['faixaHoraria']
-            #idGerente = form.cleaned_data['idGerente']
-            #idUsuario  = form.cleaned_data['idUsuario']
-            #idNivel = form.cleaned_data['idNivel']
-            #idFilial  = form.cleaned_data['idFilial']
-            #idG = Gerente.objects.get(id=idGerente)
-
-            post = Lotacao()
-
-            #post.idEvento = idEvento
-            #post.idEvento = idG
-            post.dia = data
-            post.hora = hora
-            post.faixaHoraria = faixa
-            
-            #post.idGerente = idGerente
-            #post.idUsuario = idUsuario
-            #post.idNivel = idNivel
-            #post.idFilial = idFilial
-
-            post.save()
+            form.save()
 
     formularioLotacao = formPostagemCadastroLotacao()
     return render(request, "minhaAppProjetoFinal2/lotacao.html", {'formulario': formularioLotacao})
@@ -165,46 +106,16 @@ def comentarios(request):
     if request.POST:
         form = formPostagemCadastroComentario(request.POST)
         if form.is_valid():
-            #idComentario = form.cleaned_data['idComentario']
-            data = form.cleaned_data['data']
-            hora = form.cleaned_data['hora']
-            conteudo = form.cleaned_data['conteudo']
-
-            post = Comentario()
-
-            post.data = data
-            post.hora = hora
-            post.conteudo = conteudo
-
-            post.save()
+            form.save()
 
     formularioComentario = formPostagemCadastroComentario()
     return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': formularioComentario})
-
 
 def recomendacao(request):
     if request.POST:
         form = formPostagemCadastroRecomendacao(request.POST)
         if form.is_valid():
-            #idRecomendacao = form.cleaned_data['idRecomendacao']
-            data = form.cleaned_data['data']
-            hora = form.cleaned_data['hora']
-            texto = form.cleaned_data['texto']
-            #idUsuario  = form.cleaned_data['idUsuario']
-            #idFilial  = form.cleaned_data['idFilial']
-
-            post = Recomendacao()
-
-            #post.idEvento = idEvento
-            #post.idEvento = idG
-            post.data = data
-            post.hora = hora
-            post.texto = texto
-            
-            #post.idUsuario = idUsuario
-            #post.idFilial = idFilial
-
-            post.save()
+            form.save()
 
     formularioRecomendacao = formPostagemCadastroRecomendacao()
     
@@ -215,26 +126,64 @@ def exibirEventoExterno(request):
     name = 'Lista de Inicidente Interno Cadastrado.'
     return render(request, "minhaAppProjetoFinal2/exibirEventoExterno.html", {'listaEventoExterno': listaEventoExterno})
 
-
 def exibirincidenteinterno(request):
     listaIncidenteInterno = IncidenteInterno.objects.all()
     name = 'Lista de Inicidente Interno Cadastrado.'
     return render(request, "minhaAppProjetoFinal2/exibirincidenteinterno.html", {'nome': name, 'listaIncidenteInterno': listaIncidenteInterno})
 
-
 def exibirlotacao(request):
     name='Você pode me alterar na view.'
     return render(request, "minhaAppProjetoFinal2/exibirlotacao.html", {'nome':name})
-
 
 def exibirRecomendacao(request):
     recomendacao = Recomendacao.objects.all()
     name = 'Lista de Recomendacao Cadastrado.'
     return render(request, "minhaAppProjetoFinal2/exibirRecomendacao.html", {'nome': name, 'listaRecomendacao': recomendacao})
 
-
 def exibirComentario(request):
     comentario = Comentario.objects.all()
     name = 'Lista de Comentário Cadastrado.'
     return render(request, "minhaAppProjetoFinal2/exibirComentario.html", {'nome': name, 'listaComentario': comentario})
 
+def itensDeConsumo(request):
+    if request.POST:
+        form = formPostagemCadastroItensDeConsumo(request.POST)
+        if form.is_valid():
+            form.save()
+
+    formularioLotacao = formPostagemCadastroItensDeConsumo()
+    return render(request, "minhaAppProjetoFinal2/itensDeConsumo.html", {'formulario': formularioLotacao})
+
+def exibirItens(request):
+    if request.method == 'POST':
+        id_filial = request.POST.get('idFilial')
+        idFilial = Filial.objects.get(idFilial=id_filial)
+        itens_consumo = ItensDeConsumo.objects.filter(idFilial=idFilial)
+    else:
+        itens_consumo = ItensDeConsumo.objects.none()  # Retorna uma queryset vazia
+
+    filiais = Filial.objects.all()
+    
+    return render(request, "minhaAppProjetoFinal2/exibirItens.html", {'filiais': filiais, 'itens_consumo': itens_consumo})
+
+def editarincidenteinterno(request, pk):
+    incidente = get_object_or_404(IncidenteInterno, pk=pk)
+
+    if request.method == 'POST':
+        form = formPostagemCadastroIncidenteInterno(request.POST, instance=incidente)
+        if form.is_valid():
+            form.save()
+            return redirect('cadastroincidenteinterno')  # Redirecione para a página de listagem de incidentes internos ou outra página adequada após a edição
+
+    form = formPostagemCadastroIncidenteInterno(instance=incidente)
+    return render(request, 'minhaAppProjetoFinal2/editarincidenteinterno.html', {'formulario': form})
+
+def associacaoUsuarios(request):
+    if request.POST:
+        form = formPostagemCadastroAssociacaoUsuarioUsuario(request.POST)
+        if form.is_valid():
+            form.save()
+
+    formularioUsuarios = formPostagemCadastroAssociacaoUsuarioUsuario()
+    
+    return render(request, "minhaAppProjetoFinal2/associacaoUsuarios.html", {'formulario':formularioUsuarios})

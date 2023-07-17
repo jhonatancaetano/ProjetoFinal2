@@ -5,13 +5,16 @@
         </h2>
 		
 		<br><br>
-         {% for item in listaIncidenteInterno%}
+		 {% for item in listaIncidenteInterno%}
             <b>{{item.id}}</b><br>
-            {{item.descricao}}<br>
             {{item.data}}<br>
             {{item.hora}}<br>
-            {{item.local}}<br>
+            {{item.descricao}}<br>
+            {{item.idFilial}}<br>
+            {{item.idTipoDeIncidente}}<br>
             <br><br>
+            <a href="{% url 'editarincidenteinterno' pk=incidente.idIncidente %}">Editar</a>
         {% endfor %}
+            
 	</body>
 <html>

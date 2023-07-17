@@ -90,3 +90,7 @@ admin.site.register(AssociacaoItemDeConsumoRecomendacao)
 from .models import AssociacaoRestauranteUsuario
 
 admin.site.register(AssociacaoRestauranteUsuario)
+
+from .models import AssociacaoUsuarioUsuario
+
+admin.site.register(AssociacaoUsuarioUsuario)

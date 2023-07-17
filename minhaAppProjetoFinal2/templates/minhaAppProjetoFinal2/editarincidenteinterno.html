@@ -1,0 +1,16 @@
+<html>
+	<body>
+		<form method="POST" class="form" >
+          {% csrf_token %}
+          {{formulario.as_p}}
+          <input type="submit" value="Salvar"/>
+        </form>
+        
+        {% for incidente in incidentes %}
+          <h3>{{ incidente.descricao }}</h3>
+          <!-- Outros detalhes do incidente -->
+          <a href="{% url 'editar_incidente_interno' pk=incidente.idIncidente %}">Editar</a>
+        {% endfor %}
+
+	</body>
+<html>

@@ -2,41 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
-"""class postagemcaduser(models.Model):
-    idUsuario = models.AutoField(primary_key=True)
-    nomeUsuario = models.TextField()
-    telUsuario = models.IntegerField()
-    emailUsuario  = models.EmailField(max_length=254)
-    senhaUsuario = models.TextField()
-    donoRestautanteUsuario  = models.BooleanField()
-    #titulo = models.CharField(max_length=100)
-    #texto = models.TextField()
-    #data = models.DateTimeField()
-    def __str__(self):
-        return self.idUsuario
-
-
-class postagem(models.Model):
-    titulo = models.CharField(max_length=100)
-    texto = models.TextField()
-    data = models.DateTimeField()
-    def __str__(self):
-        return self.titulo
-
-
-class cadastroUsuario(models.Model):
-    idUsuario = models.AutoField(primary_key=True)
-    nomeUsuario = models.TextField()
-    telUsuario = models.IntegerField()
-    emailUsuario  = models.EmailField(max_length=254)
-    senhaUsuario = models.TextField()
-    donoRestautanteUsuario  = models.BooleanField()
-    def __str__(self):
-        return self.titulo
-"""
-
-
 class TipoDeComida(models.Model):
     idComida = models.AutoField(primary_key=True)
     descComida = models.TextField()
@@ -48,18 +13,19 @@ class Restaurante(models.Model):
     nome = models.TextField()
     idComida = models.ForeignKey("TipoDeComida", on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.idRestaurante)
+        return str(self.nome)
 
 class Filial(models.Model):
     idFilial = models.AutoField(primary_key=True)
-    localizacaoGPS = models.TextField()
     rua = models.TextField()
     numero = models.IntegerField()
+    idRestaurante = models.ForeignKey("Restaurante", on_delete=models.CASCADE)
     def __str__(self):
         return str(self.idFilial)
 
 class Gerente(models.Model):
     idGerente = models.AutoField(primary_key=True)
+    idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
     def __str__(self):
         return str(self.idGerente)
 
@@ -76,6 +42,7 @@ class Comentario(models.Model):
     data = models.DateField()
     hora = models.TimeField()
     conteudo = models.TextField()
+    Item = models.ForeignKey("ItensDeConsumo", on_delete=models.CASCADE)
     def __str__(self):
         return str(self.idComentario)
 
@@ -92,7 +59,7 @@ class ItensDeConsumo(models.Model):
     idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
     idClassificacao = models.ForeignKey("ClassificacaoDoItem", on_delete=models.CASCADE)
     def __str__(self):
-        return str(self.idItem)
+        return str(self.nomeItem)
     
 class TipoDeRelacionamento(models.Model):
     idTipoRelacionamento = models.AutoField(primary_key=True)
@@ -116,7 +83,6 @@ class Usuario(models.Model):
     def __str__(self):
         return str(self.idUsuario)
 
-
 class NivelDeLotacao(models.Model):
     idNivel = models.AutoField(primary_key=True)
     descNivel = models.TextField()
@@ -127,10 +93,7 @@ class Lotacao(models.Model):
     idLotacao = models.AutoField(primary_key=True)
     dia = models.DateField()
     hora = models.TimeField()
-    faixaHoraria = models.DateTimeField()
-    #idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
     idNivel = models.ForeignKey("NivelDeLotacao", on_delete=models.CASCADE)
-    #idGerente = models.ForeignKey("Gerente", on_delete=models.CASCADE)
     idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
     def __str__(self):
         return str(self.idLotacao)
@@ -141,34 +104,13 @@ class TipoDeIncidenteInterno(models.Model):
     def __str__(self):
         return str(self.descIncidente)
 
-class IncidenteInterno(models.Model):
-    #filial1 = 'Filial de Botafogo'
-    #filial2 = 'Filial de Copacabana'
-    #filial3 = 'Filial de Ipanema'
-    #filial4 = 'Filial do Leblon'
-    #filial5 = 'Filial do Leme'
-    #filial6 = 'Filial da Gávea'
-    #filial7 = 'Filial do Jardim Botânico'
-    
-    #TipoDeFiliais = [
-        #(filial1, 'TT Burguer Botafogo'),
-        #(filial1, 'TT Burguer Copacabana'),
-        #(filial1, 'TT Burguer Ipanema'),
-        #(filial1, 'TT Burguer Leblon'),
-        #(filial1, 'TT Burguer Leme'),
-        #(filial1, 'TT Burguer Gávea'),
-        #(filial1, 'TT Burguer Jardim Botânico')
-    #]
-    
+class IncidenteInterno(models.Model):    
     idIncidente = models.AutoField(primary_key=True)
     data = models.DateField()
     hora = models.TimeField()
-    local = models.TextField()
     descricao = models.TextField()
     idFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
-    idTipoIncidente = models.ForeignKey("TipoDeIncidenteInterno", on_delete=models.CASCADE)
-    #idGerente = models.ForeignKey("Gerente", on_delete=models.CASCADE)
-    #idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    idTipoDeIncidente = models.ForeignKey("TipoDeIncidenteInterno", on_delete=models.CASCADE)
     def __str__(self):
         return str(self.idIncidente)
 
@@ -208,85 +150,7 @@ class AssociacaoRestauranteUsuario(models.Model):
     idRestaurante = models.ForeignKey("Restaurante", on_delete=models.CASCADE)
     idUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
 
-
-
-
-"""class RevisaoDeComentario(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class Comentario(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class ClassificacaoDoItem(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class ItensDeConsumo(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class TipoDeRelacionamento(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class Usuario(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class Relacionamento(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class NivelDeLotacao(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class Lotacao(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class TipoDeIncidenteInterno(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class IncidenteInterno(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class EventoExterno(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class Recomendacao(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class AssociacaoFilialEventoExterno(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class AssociacaoItemDeConsumoRecomendacao(models.Model):
-    def __str__(self):
-        return self.xxx
-
-
-class AssociacaoRestauranteUsuario(models.Model):
-    def __str__(self):
-        return self.xxx
-"""
+class AssociacaoUsuarioUsuario(models.Model):
+    idUsuarioSecundario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    idTipoRelacionamento = models.ForeignKey("TipoDeRelacionamento", on_delete=models.CASCADE)
+ 
