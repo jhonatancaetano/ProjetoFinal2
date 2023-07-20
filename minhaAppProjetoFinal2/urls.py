@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^exibirItens/', views.exibirItens, name='exibirItens'),
 	url(r'^editarincidenteinterno/', views.editarincidenteinterno, name="editarincidenteinterno"),
 	url(r'^associacaoUsuarios/', views.associacaoUsuarios, name="associacaoUsuarios"),
+	url(r'^excluirIncidente/', views.excluirIncidente, name="excluirIncidente"),
 ]

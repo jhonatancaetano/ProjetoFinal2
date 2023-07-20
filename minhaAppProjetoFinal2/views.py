@@ -25,33 +25,7 @@ def cadastroeventoexterno(request):
     if request.POST:
         form = formPostagemCadastroEventoExterno(request.POST)
         if form.is_valid():
-            #idEvento = form.cleaned_data['idEvento']
-            data = form.cleaned_data['dataEvento']
-            hora = form.cleaned_data['horaEvento']
-            rua = form.cleaned_data['rua']
-            num = form.cleaned_data['numero']
-            bairro = form.cleaned_data['bairro']
-            cidade = form.cleaned_data['cidade']
-            desc = form.cleaned_data['descricao']
-            #idGerente =  form.cleaned_data['idGerente']
-            #idUsuario  =  form.cleaned_data['idUsuario']
-            #idG = Gerente.objects.get(id=idGerente)
-
-            post = EventoExterno()
-
-            #post.idEvento = idEvento
-            #post.idEvento = idG
-            post.dataEvento = data
-            post.horaEvento = hora
-            post.rua = rua
-            post.numero = num
-            post.bairro = bairro
-            post.cidade = cidade
-            post.descricao = desc
-            #post.idGerente = idGerente
-            #post.idUsuario = idUsuario
-
-            post.save()
+            form.save()
 
     formularioEventoExterno = formPostagemCadastroEventoExterno()
 
@@ -187,3 +161,13 @@ def associacaoUsuarios(request):
     formularioUsuarios = formPostagemCadastroAssociacaoUsuarioUsuario()
     
     return render(request, "minhaAppProjetoFinal2/associacaoUsuarios.html", {'formulario':formularioUsuarios})
+
+def excluirIncidente(request, pk):
+    incidente = get_object_or_404(IncidenteInterno, idIncidente=pk)
+
+    if request.method == 'POST':
+        incidente.delete()
+        return redirect('listar_incidentes_internos')  # Redirecione para a página de listagem de incidentes internos ou outra página adequada após a exclusão
+
+    return render(request, "minhaAppProjetoFinal2/excluirIncidente.html", {'incidente': incidente})
+

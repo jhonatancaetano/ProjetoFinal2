@@ -1,54 +1,51 @@
 from django import forms
-from .models import *
+from .models import EventoExterno
+from .models import IncidenteInterno
+from .models import Lotacao
+from .models import ItensDeConsumo
+from .models import Comentario
+from .models import Recomendacao
+from .models import AssociacaoUsuarioUsuario
 
-"""class formPostagem(forms.Form):
-    titulo = forms.CharField()
-    texto = forms.CharField()
-    data = forms.DateTimeField()
-    
-class formPostagemCadastroUsuario(forms.Form):
-    nomeUsuario = forms.CharField()
-    telUsuario = forms.IntegerField()
-    emailUsuario  = forms.EmailField()
-    senhaUsuario = forms.CharField()
-    donoRestautanteUsuario  = forms.BooleanField(required=False)
-"""
+class formPostagemCadastroEventoExterno(forms.ModelForm):
+    class Meta:
+        model = EventoExterno
+        fields = ['dataEvento', 'horaEvento', 'rua', 'numero', 'bairro', 'cidade', 'descricao', 'nomeUsuario']
 
-class formPostagemCadastroEventoExterno(forms.Form):
-    dataEvento = forms.DateField()
-    horaEvento = forms.TimeField()
-    rua = forms.CharField()
-    numero = forms.IntegerField()
-    bairro = forms.CharField()
-    cidade = forms.CharField()
-    descricao = forms.CharField()
+    def __init__(self, *args, **kwargs):
+        super(formPostagemCadastroEventoExterno, self).__init__(*args, **kwargs)
+        self.fields['nomeUsuario'].widget = forms.HiddenInput()
 
 class formPostagemCadastroIncidenteInterno(forms.ModelForm):
     class Meta:
         model = IncidenteInterno
-        fields = ['data', 'hora', 'descricao','idFilial', 'idTipoDeIncidente']
+        fields = ['data', 'hora', 'descricao', 'nomeFilial', 'nomeTipoDeIncidente', 'nomeUsuario']
+
+    def __init__(self, *args, **kwargs):
+        super(formPostagemCadastroIncidenteInterno, self).__init__(*args, **kwargs)
+        self.fields['nomeUsuario'].widget = forms.HiddenInput()
 
 class formPostagemCadastroLotacao(forms.ModelForm):
     class Meta:
         model = Lotacao
-        fields = ['dia', 'hora', 'idNivel','idFilial']
-        
+        fields = ['dia', 'hora', 'nomeNivel', 'nomeFilial']
+
 class formPostagemCadastroItensDeConsumo(forms.ModelForm):
     class Meta:
         model = ItensDeConsumo
-        fields = ['idFilial','nomeItem', 'precoItem', 'idClassificacao']
+        fields = ['nomeFilial', 'nomeItem', 'precoItem', 'nomeClassificacao']
 
 class formPostagemCadastroRecomendacao(forms.ModelForm):
     class Meta:
         model = Recomendacao
-        fields = ['idFilial','data', 'hora', 'texto', 'idUsuario']
-    
+        fields = ['nomeFilial', 'data', 'hora', 'texto', 'nomeUsuario']
+
 class formPostagemCadastroComentario(forms.ModelForm):
-     class Meta:
+    class Meta:
         model = Comentario
-        fields = ['data', 'hora', 'Item','conteudo']
-        
+        fields = ['data', 'hora', 'nomeItem', 'conteudo']
+
 class formPostagemCadastroAssociacaoUsuarioUsuario(forms.ModelForm):
-     class Meta:
+    class Meta:
         model = AssociacaoUsuarioUsuario
-        fields = ['idUsuarioSecundario', 'idTipoRelacionamento']
+        fields = ['nomeUsuarioSecundario', 'nomeTipoRelacionamento']

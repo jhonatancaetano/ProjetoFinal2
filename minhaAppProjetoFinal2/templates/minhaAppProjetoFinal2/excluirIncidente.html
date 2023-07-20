@@ -1,0 +1,17 @@
+<html>
+	<body>
+		<h1>Deseja excluir o incidente interno:</h1>
+        <p>{{ incidente.descricao }}</p>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="submit" value="Excluir">
+        </form>
+
+        {% for incidente in incidentes %}
+          <h3>{{ incidente.descricao }}</h3>
+          <!-- Outros detalhes do incidente -->
+          <a href="{% url 'excluir_incidente' pk=incidente.idIncidente %}">Excluir</a>
+        {% endfor %}
+
+	</body>
+<html>
