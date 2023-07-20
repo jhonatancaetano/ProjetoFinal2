@@ -14,8 +14,13 @@
         {% if itens_consumo %}
           <h2 value="{{filial.nome}}">Itens de Consumo da Filial {{ filial.nome }} Selecionada:</h2>
           <ul>
+              
             {% for item in itens_consumo %}
+               {% if item.nomeItem == "Burrito" %}
+                <li><a href="{% url 'burrito' %}">{{ item.nomeItem }}</a></li>
+            {% else %}
               <li>{{ item.nomeItem }}</li>
+               {% endif %}
             {% endfor %}
           </ul>
         {% else %}

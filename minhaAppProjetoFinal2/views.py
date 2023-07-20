@@ -208,3 +208,14 @@ def excluirIncidente(request, pk):
 
     return render(request, "minhaAppProjetoFinal2/excluirIncidente.html", {'incidente': incidente})
 
+
+def burrito(request):
+    nome_item = "Burrito"  # Substitua "Arroz" pelo nome do item específico que você deseja exibir
+    burritosi = ItensDeConsumo.objects.filter(nomeItem='Burrito').first()
+   
+    item_consumo = ItensDeConsumo.objects.filter(nomeItem=burritosi)
+    comentario = Comentario.objects.filter(nomeItem=burritosi)
+    # Filtrar o item de consumo com base no nome do item
+    #item_consumo = get_object_or_404(ItensDeConsumo, nomeItem__nomeItem=nome_item)
+    return render(request, "minhaAppProjetoFinal2/burrito.html", {'item_consumo': item_consumo, 'comentario': comentario})
+

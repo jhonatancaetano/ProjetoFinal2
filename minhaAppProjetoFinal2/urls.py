@@ -26,4 +26,5 @@ urlpatterns = [
 	url(r'^editarincidenteinterno/', views.editarincidenteinterno, name="editarincidenteinterno"),
 	url(r'^associacaoUsuarios/', views.associacaoUsuarios, name="associacaoUsuarios"),
 	url(r'^excluirIncidente/', views.excluirIncidente, name="excluirIncidente"),
+	url(r'^burrito/', views.burrito, name="burrito"),
 ]

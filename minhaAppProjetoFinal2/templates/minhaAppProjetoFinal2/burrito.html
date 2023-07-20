@@ -1,0 +1,43 @@
+<html>
+	<body>
+
+            
+        <head>
+            <title>Item de Consumo</title>
+        </head>
+        <body>
+          
+		
+		<br>
+        {% for item in item_consumo%}
+            <h1>Detalhes do Item de Consumo</h1>
+            <p><strong>Nome do Item:</strong> {{item.nomeItem}}<br></p>
+            <p><strong>Preço:</strong> R${{item.precoItem}}</p>
+            <p><strong>Filial:</strong> {{item.nomeFilial}}</p>
+            <p><strong>Classificação:</strong> {{item.nomeClassificacao}}</p>
+            <p><strong>Item Cadastrado Por:</strong> {{item.nomeUsuario}}</p>
+	
+            <b>{{item.id}}</b><br>
+        
+            <br>
+            <br><br>
+        {% endfor %}
+            
+        {% for item in comentario%}
+            <h1>Comentários sobre o Item de Consumo</h1>
+            <p><strong>Nome do Item:</strong> {{item.nomeItem}}<br></p>
+            <p><strong>Data:</strong> {{item.data}}</p>
+            <p><strong>Hora:</strong> {{item.hora}}</p>
+            <p><strong>Comentário:</strong> {{item.conteudo}}</p>
+            <p><strong>Comentário Feito Por:</strong> {{item.nomeUsuario}}</p>
+	
+            <b>{{item.id}}</b><br>
+        
+            <br>
+            <br><br>
+        {% endfor %}
+            
+ 
+        </body>
+	</body>
+<html>
