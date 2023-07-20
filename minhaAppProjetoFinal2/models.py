@@ -156,5 +156,15 @@ class AssociacaoRestauranteUsuario(models.Model):
     nomeUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
 
 class AssociacaoUsuarioUsuario(models.Model):
-    nomeUsuarioSecundario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    nomeUsuarioPrincipal = models.ForeignKey("Usuario", on_delete=models.CASCADE, related_name='associacao_usuario1')
+    nomeUsuarioSecundario = models.ForeignKey("Usuario", on_delete=models.CASCADE, related_name='associacao_usuario2')
     nomeTipoRelacionamento = models.ForeignKey("TipoDeRelacionamento", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.nomeUsuarioPrincipal} - {self.nomeUsuarioSecundario} - {self.nomeTipoRelacionamento}"
+
+    class Meta:
+        # Definindo a chave primária concatenada
+        constraints = [
+            models.UniqueConstraint(fields=['nomeUsuarioPrincipal', 'nomeUsuarioSecundario', 'nomeTipoRelacionamento'], name='chave_primaria_concatenada')
+        ]

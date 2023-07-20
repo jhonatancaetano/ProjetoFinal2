@@ -25,7 +25,11 @@ def cadastroeventoexterno(request):
     if request.POST:
         form = formPostagemCadastroEventoExterno(request.POST)
         if form.is_valid():
-            form.save()
+            usuario = Usuario.objects.get(idUsuario=1)  # Substitua '1' pelo ID do usuário correto
+            eventoexterno = form.save(commit=False)
+            eventoexterno.nomeUsuario = usuario
+            eventoexterno.save()
+            #form.save()
 
     formularioEventoExterno = formPostagemCadastroEventoExterno()
 
@@ -61,16 +65,25 @@ def cadastroincidenteinterno(request):
     if request.POST:
         form = formPostagemCadastroIncidenteInterno(request.POST)
         if form.is_valid():
-            form.save()
+            usuario = Usuario.objects.get(idUsuario=1)  # Substitua '1' pelo ID do usuário correto
+            incidenteinterno = form.save(commit=False)
+            incidenteinterno.nomeUsuario = usuario
+            incidenteinterno.save()
+            #form.save()
 
     formularioIncidenteInterno = formPostagemCadastroIncidenteInterno()
     return render(request, "minhaAppProjetoFinal2/cadastroincidenteinterno.html",{'formulario': formularioIncidenteInterno})
 
 def lotacao(request):
     if request.POST:
-        form = formPostagemCadastroLotacao(request.POST)
+        form = formPostagemCadastroLotacao(request.POST, initial={'nomeUsuario': 1})
         if form.is_valid():
-            form.save()
+            # Configurar o nomeUsuario manualmente antes de salvar o formulário
+            usuario = Usuario.objects.get(idUsuario=1)  # Substitua '1' pelo ID do usuário correto
+            lotacao = form.save(commit=False)
+            lotacao.nomeUsuario = usuario
+            lotacao.save()
+            #form.save()
 
     formularioLotacao = formPostagemCadastroLotacao()
     return render(request, "minhaAppProjetoFinal2/lotacao.html", {'formulario': formularioLotacao})
@@ -80,7 +93,11 @@ def comentarios(request):
     if request.POST:
         form = formPostagemCadastroComentario(request.POST)
         if form.is_valid():
-            form.save()
+            usuario = Usuario.objects.get(idUsuario=3)  # Substitua '1' pelo ID do usuário correto
+            comentario = form.save(commit=False)
+            comentario.nomeUsuario = usuario
+            comentario.save()
+            #form.save()
 
     formularioComentario = formPostagemCadastroComentario()
     return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': formularioComentario})
@@ -89,7 +106,11 @@ def recomendacao(request):
     if request.POST:
         form = formPostagemCadastroRecomendacao(request.POST)
         if form.is_valid():
-            form.save()
+            usuario = Usuario.objects.get(idUsuario=4)  # Substitua '1' pelo ID do usuário correto
+            recomend = form.save(commit=False)
+            recomend.nomeUsuario = usuario
+            recomend.save()
+            #form.save()
 
     formularioRecomendacao = formPostagemCadastroRecomendacao()
     
@@ -123,22 +144,34 @@ def itensDeConsumo(request):
     if request.POST:
         form = formPostagemCadastroItensDeConsumo(request.POST)
         if form.is_valid():
-            form.save()
+            usuario = Usuario.objects.get(idUsuario=7)  # Substitua '1' pelo ID do usuário correto
+            item = form.save(commit=False)
+            item.nomeUsuario = usuario
+            item.save()
+            #form.save()
 
     formularioLotacao = formPostagemCadastroItensDeConsumo()
     return render(request, "minhaAppProjetoFinal2/itensDeConsumo.html", {'formulario': formularioLotacao})
 
 def exibirItens(request):
     if request.method == 'POST':
-        id_filial = request.POST.get('idFilial')
-        idFilial = Filial.objects.get(idFilial=id_filial)
-        itens_consumo = ItensDeConsumo.objects.filter(idFilial=idFilial)
+        nome_filial = request.POST.get('nomeFilial')
+        print("Nome da filial selecionada:", nome_filial)
+
+        # Obtenha a filial com base no nome selecionado
+        filial = get_object_or_404(Filial, nome=nome_filial)
+        print("Filial encontrada:", filial)
+
+        # Filtrar os itens de consumo com base na filial selecionada
+        itens_consumo = ItensDeConsumo.objects.filter(nomeFilial=filial)
+        print("Itens de consumo filtrados:", itens_consumo)
     else:
-        itens_consumo = ItensDeConsumo.objects.none()  # Retorna uma queryset vazia
+        itens_consumo = ItensDeConsumo.objects.none()
 
     filiais = Filial.objects.all()
-    
+
     return render(request, "minhaAppProjetoFinal2/exibirItens.html", {'filiais': filiais, 'itens_consumo': itens_consumo})
+
 
 def editarincidenteinterno(request, pk):
     incidente = get_object_or_404(IncidenteInterno, pk=pk)
@@ -156,7 +189,11 @@ def associacaoUsuarios(request):
     if request.POST:
         form = formPostagemCadastroAssociacaoUsuarioUsuario(request.POST)
         if form.is_valid():
-            form.save()
+            usuario = Usuario.objects.get(idUsuario=4)  # Substitua '1' pelo ID do usuário correto
+            associa = form.save(commit=False)
+            associa.nomeUsuarioPrincipal = usuario
+            associa.save()
+            #form.save()
 
     formularioUsuarios = formPostagemCadastroAssociacaoUsuarioUsuario()
     
