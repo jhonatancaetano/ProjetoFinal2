@@ -1,7 +1,8 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-from . import views
 from django.urls import path
+from . import views
+
 
 urlpatterns = [
 
@@ -27,4 +28,5 @@ urlpatterns = [
 	url(r'^associacaoUsuarios/', views.associacaoUsuarios, name="associacaoUsuarios"),
 	url(r'^excluirIncidente/', views.excluirIncidente, name="excluirIncidente"),
 	url(r'^burrito/', views.burrito, name="burrito"),
+	url(r'^get_itens_by_filial/', views.get_itens_by_filial, name='get_itens_by_filial'),
 ]

@@ -39,16 +39,6 @@ class RevisaoDeComentario(models.Model):
     def __str__(self):
         return str(self.idRevisao)
 
-class Comentario(models.Model):
-    idComentario = models.AutoField(primary_key=True)
-    data = models.DateField()
-    hora = models.TimeField()
-    conteudo = models.TextField()
-    nomeItem = models.ForeignKey("ItensDeConsumo", on_delete=models.CASCADE)
-    nomeUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
-    def __str__(self):
-        return str(self.idComentario)
-
 class ClassificacaoDoItem(models.Model):
     idClassificacao = models.AutoField(primary_key=True)
     descItem = models.TextField()
@@ -64,6 +54,17 @@ class ItensDeConsumo(models.Model):
     nomeUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
     def __str__(self):
         return str(self.nomeItem)
+    
+class Comentario(models.Model):
+    idComentario = models.AutoField(primary_key=True)
+    data = models.DateField()
+    hora = models.TimeField()
+    conteudo = models.TextField()
+    nomeFilial = models.ForeignKey("Filial", on_delete=models.CASCADE)
+    nomeItem = models.ForeignKey("ItensDeConsumo", on_delete=models.CASCADE)
+    nomeUsuario = models.ForeignKey("Usuario", on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.idComentario)
 
 class TipoDeRelacionamento(models.Model):
     idTipoRelacionamento = models.AutoField(primary_key=True)
@@ -164,7 +165,7 @@ class AssociacaoUsuarioUsuario(models.Model):
         return f"{self.nomeUsuarioPrincipal} - {self.nomeUsuarioSecundario} - {self.nomeTipoRelacionamento}"
 
     class Meta:
-        # Definindo a chave primária concatenada
+        # Definindo a chave primรกria concatenada
         constraints = [
             models.UniqueConstraint(fields=['nomeUsuarioPrincipal', 'nomeUsuarioSecundario', 'nomeTipoRelacionamento'], name='chave_primaria_concatenada')
         ]

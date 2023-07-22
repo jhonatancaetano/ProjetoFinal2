@@ -1,21 +1,62 @@
+<!-- seu_template.html -->
 {% load static %}
 <html>
-    <head>
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="{% static 'comentario.css' %}">
-        <title>Gastronomia Qualificada</title>
-    </head>
-    <body>
-        <div class="fundo">
-            <div class="v80_1836">
-                <p class="topo">CADASTRO DE COMENTÁRIO</p>
-            </div>
-		<form method="POST" class="form" >
-            {% csrf_token %}
-            {{formulario.as_p}}
-            <input type="submit" value="Salvar"/>
-        </form>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Kurale&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'comentario.css' %}">
+    <title>Gastronomia Qualificada</title>
+</head>
+<body>
+    <div class="fundo">
+        <div class="v80_1836">
+            <p class="topo">CADASTRO DE COMENTÁRIO</p>
         </div>
-	</body>
-<html>
+        <form method="POST" class="form" >
+            {% csrf_token %}
+            <label for="id_nomeFilial">Filial:</label>
+            {{ formulario.nomeFilial }}
+            <br><br>
+            <label for="id_nomeItem">Item de Consumo:</label>
+            {{ formulario.nomeItem }}
+            <br><br>
+            <label for="id_data">Data:</label>
+            {{ formulario.data }}
+            <br><br>
+            <label for="id_hora">Hora:</label>
+            {{ formulario.hora }}
+            <br><br>
+            <label for="id_conteudo">Conteúdo:</label>
+            {{ formulario.conteudo }}
+            <br><br>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#id_nomeFilial').change(function() {
+                var filial_id = $(this).val();
+                if (filial_id) {
+                    $.ajax({
+                        url: '{% url "get_itens_by_filial" %}',
+                        data: { 'idFilial': filial_id },
+                        dataType: 'json',
+                        success: function(data) {
+                            var options = '<option value="">Selecione o Item de Consumo</option>';
+                            for (var i = 0; i < data.length; i++) {
+                                options += '<option value="' + data[i].idItem + '">' + data[i].nomeItem + '</option>';
+                            }
+                            $('#id_nomeItem').html(options);
+                        }
+                    });
+                } else {
+                    // Desabilitar a seleção de itens de consumo
+                    $('#id_nomeItem').html('<option value="">Selecione uma filial primeiro</option>');
+                    $('#id_nomeItem').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

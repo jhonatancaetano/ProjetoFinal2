@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import *
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -79,7 +80,7 @@ def lotacao(request):
         form = formPostagemCadastroLotacao(request.POST, initial={'nomeUsuario': 1})
         if form.is_valid():
             # Configurar o nomeUsuario manualmente antes de salvar o formulário
-            usuario = Usuario.objects.get(idUsuario=1)  # Substitua '1' pelo ID do usuário correto
+            usuario = Usuario.objects.get(idUsuario=6)  # Substitua '1' pelo ID do usuário correto
             lotacao = form.save(commit=False)
             lotacao.nomeUsuario = usuario
             lotacao.save()
@@ -88,19 +89,26 @@ def lotacao(request):
     formularioLotacao = formPostagemCadastroLotacao()
     return render(request, "minhaAppProjetoFinal2/lotacao.html", {'formulario': formularioLotacao})
 
-
 def comentarios(request):
-    if request.POST:
-        form = formPostagemCadastroComentario(request.POST)
+    filiais = Filial.objects.all()
+
+    if request.method == 'POST':
+        form = formPostagemCadastroComentario(request.POST, filial_queryset=filiais)
         if form.is_valid():
-            usuario = Usuario.objects.get(idUsuario=3)  # Substitua '1' pelo ID do usuário correto
             comentario = form.save(commit=False)
+            # Você pode definir o usuário atual aqui, por exemplo:
+            # comentario.nomeUsuario = request.user
+            usuario = Usuario.objects.get(idUsuario=3)  # Substitua '3' pelo ID do usuário correto
             comentario.nomeUsuario = usuario
             comentario.save()
-            #form.save()
+            return redirect('exibir_itens', filial_id=comentario.nomeFilial.pk)
+    else:
+        form = formPostagemCadastroComentario(filial_queryset=filiais)
 
-    formularioComentario = formPostagemCadastroComentario()
-    return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': formularioComentario})
+    return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': form, 'filiais': filiais})
+
+
+
 
 def recomendacao(request):
     if request.POST:
@@ -144,7 +152,7 @@ def itensDeConsumo(request):
     if request.POST:
         form = formPostagemCadastroItensDeConsumo(request.POST)
         if form.is_valid():
-            usuario = Usuario.objects.get(idUsuario=7)  # Substitua '1' pelo ID do usuário correto
+            usuario = Usuario.objects.get(idUsuario=4)  # Substitua '1' pelo ID do usuário correto
             item = form.save(commit=False)
             item.nomeUsuario = usuario
             item.save()
@@ -171,7 +179,6 @@ def exibirItens(request):
     filiais = Filial.objects.all()
 
     return render(request, "minhaAppProjetoFinal2/exibirItens.html", {'filiais': filiais, 'itens_consumo': itens_consumo})
-
 
 def editarincidenteinterno(request, pk):
     incidente = get_object_or_404(IncidenteInterno, pk=pk)
@@ -208,7 +215,6 @@ def excluirIncidente(request, pk):
 
     return render(request, "minhaAppProjetoFinal2/excluirIncidente.html", {'incidente': incidente})
 
-
 def burrito(request):
     nome_item = "Burrito"  # Substitua "Arroz" pelo nome do item específico que você deseja exibir
     burritosi = ItensDeConsumo.objects.filter(nomeItem='Burrito').first()
@@ -219,3 +225,14 @@ def burrito(request):
     #item_consumo = get_object_or_404(ItensDeConsumo, nomeItem__nomeItem=nome_item)
     return render(request, "minhaAppProjetoFinal2/burrito.html", {'item_consumo': item_consumo, 'comentario': comentario})
 
+def get_itens_by_filial(request):
+    filial_id = request.GET.get('idFilial')
+    print("Filial ID:", filial_id)
+
+    itens_de_consumo = ItensDeConsumo.objects.filter(nomeFilial_id=filial_id).values('idItem', 'nomeItem')
+    print("Itens de Consumo:", itens_de_consumo)
+
+    if not itens_de_consumo.exists():
+        return JsonResponse([], safe=False)
+
+    return JsonResponse(list(itens_de_consumo), safe=False)
