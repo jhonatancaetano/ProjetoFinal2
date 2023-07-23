@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import *
 from django.http import JsonResponse
-import logging
 
 # Create your views here.
 
@@ -91,19 +90,28 @@ def lotacao(request):
     return render(request, "minhaAppProjetoFinal2/lotacao.html", {'formulario': formularioLotacao})
 
 def comentarios(request):
+    filiais = Filial.objects.all()
+
     if request.method == 'POST':
         form = formPostagemCadastroComentario(request.POST)
-        logging.info('Foi!')  # Adicione esta linha
         if form.is_valid():
             usuario = Usuario.objects.get(idUsuario=3)  # Substitua '3' pelo ID do usuário correto
             comentario = form.save(commit=False)
             comentario.nomeUsuario = usuario
             comentario.save()
+            return redirect('comentarios')
     else:
         form = formPostagemCadastroComentario()
 
-    return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': form})
+    # Verifica se a filial está selecionada
+    filial_selecionada = request.POST.get('nomeFilial')
 
+    if filial_selecionada:
+        form.fields['nomeItem'].queryset = ItensDeConsumo.objects.filter(nomeFilial_id=filial_selecionada)
+    else:
+        form.fields['nomeItem'].queryset = ItensDeConsumo.objects.none()
+
+    return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': form, 'filiais': filiais})
 
 
 def recomendacao(request):

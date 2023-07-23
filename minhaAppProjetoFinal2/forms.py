@@ -41,10 +41,6 @@ class formPostagemCadastroComentario(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['nomeFilial', 'nomeItem', 'data', 'hora', 'conteudo']
-        
-    def __init__(self, *args, **kwargs):
-        super(formPostagemCadastroComentario, self).__init__(*args, **kwargs)
-        self.fields['nomeItem'].queryset = ItensDeConsumo.objects.none()
 
 class formPostagemCadastroAssociacaoUsuarioUsuario(forms.ModelForm):
     class Meta:
