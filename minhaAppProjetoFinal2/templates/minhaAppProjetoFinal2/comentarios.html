@@ -12,7 +12,7 @@
         <div class="v80_1836">
             <p class="topo">CADASTRO DE COMENTÁRIO</p>
         </div>
-        <form method="POST" class="form" >
+        <form method="POST" action="{% url 'comentarios' %}" class="form">
             {% csrf_token %}
             <label for="id_nomeFilial">Filial:</label>
             {{ formulario.nomeFilial }}
@@ -32,6 +32,7 @@
             <button type="submit">Cadastrar</button>
         </form>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -48,6 +49,7 @@
                                 options += '<option value="' + data[i].idItem + '">' + data[i].nomeItem + '</option>';
                             }
                             $('#id_nomeItem').html(options);
+                            $('#id_nomeItem').prop('disabled', false);
                         }
                     });
                 } else {

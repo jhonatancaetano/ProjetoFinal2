@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import *
 from django.http import JsonResponse
+import logging
 
 # Create your views here.
 
@@ -90,23 +91,18 @@ def lotacao(request):
     return render(request, "minhaAppProjetoFinal2/lotacao.html", {'formulario': formularioLotacao})
 
 def comentarios(request):
-    filiais = Filial.objects.all()
-
     if request.method == 'POST':
-        form = formPostagemCadastroComentario(request.POST, filial_queryset=filiais)
+        form = formPostagemCadastroComentario(request.POST)
+        logging.info('Foi!')  # Adicione esta linha
         if form.is_valid():
-            comentario = form.save(commit=False)
-            # Você pode definir o usuário atual aqui, por exemplo:
-            # comentario.nomeUsuario = request.user
             usuario = Usuario.objects.get(idUsuario=3)  # Substitua '3' pelo ID do usuário correto
+            comentario = form.save(commit=False)
             comentario.nomeUsuario = usuario
             comentario.save()
-            return redirect('exibir_itens', filial_id=comentario.nomeFilial.pk)
     else:
-        form = formPostagemCadastroComentario(filial_queryset=filiais)
+        form = formPostagemCadastroComentario()
 
-    return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': form, 'filiais': filiais})
-
+    return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': form})
 
 
 
@@ -227,12 +223,5 @@ def burrito(request):
 
 def get_itens_by_filial(request):
     filial_id = request.GET.get('idFilial')
-    print("Filial ID:", filial_id)
-
     itens_de_consumo = ItensDeConsumo.objects.filter(nomeFilial_id=filial_id).values('idItem', 'nomeItem')
-    print("Itens de Consumo:", itens_de_consumo)
-
-    if not itens_de_consumo.exists():
-        return JsonResponse([], safe=False)
-
     return JsonResponse(list(itens_de_consumo), safe=False)

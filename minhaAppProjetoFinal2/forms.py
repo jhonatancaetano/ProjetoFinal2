@@ -41,14 +41,9 @@ class formPostagemCadastroComentario(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['nomeFilial', 'nomeItem', 'data', 'hora', 'conteudo']
-
+        
     def __init__(self, *args, **kwargs):
-        filial_queryset = kwargs.pop('filial_queryset', None)
         super(formPostagemCadastroComentario, self).__init__(*args, **kwargs)
-
-        if filial_queryset is not None:
-            self.fields['nomeFilial'].queryset = filial_queryset
-
         self.fields['nomeItem'].queryset = ItensDeConsumo.objects.none()
 
 class formPostagemCadastroAssociacaoUsuarioUsuario(forms.ModelForm):
