@@ -41,27 +41,6 @@ def buscarusuarios(request):
     name = 'Lista de Recomendacao Cadastrado.'
     return render(request, "minhaAppProjetoFinal2/buscarusuarios.html", {'nome': name, 'listaRecomendacao': recomendacao})
 
-def inserePostagem(request):
-    """if request.POST:
-        form = formPostagem(request.POST)
-        if form.is_valid():
-            tit = form.cleaned_data['titulo']
-            tex = form.cleaned_data['texto']
-            dh = form.cleaned_data['data']
-
-            post = postagem()
-            post.titulo = tit
-            post.texto = tex
-            post.data = dh
-
-            post.save()
-
-    formulario = formPostagem()
-
-    return render(request, "minhaAppProjetoFinal2/inserePostagem.html", {'formulario': formulario})"""
-    name = 'Insere Postagem.'
-    return render(request, "minhaAppProjetoFinal2/inserePostagem.html", {'nome': name})
-
 def cadastroincidenteinterno(request):
     if request.POST:
         form = formPostagemCadastroIncidenteInterno(request.POST)
@@ -113,7 +92,6 @@ def comentarios(request):
 
     return render(request, "minhaAppProjetoFinal2/comentarios.html", {'formulario': form, 'filiais': filiais})
 
-
 def recomendacao(request):
     if request.POST:
         form = formPostagemCadastroRecomendacao(request.POST)
@@ -127,30 +105,6 @@ def recomendacao(request):
     formularioRecomendacao = formPostagemCadastroRecomendacao()
     
     return render(request, "minhaAppProjetoFinal2/recomendacao.html", {'formulario': formularioRecomendacao})
-
-def exibirEventoExterno(request):
-    listaEventoExterno = EventoExterno.objects.all()
-    name = 'Lista de Inicidente Interno Cadastrado.'
-    return render(request, "minhaAppProjetoFinal2/exibirEventoExterno.html", {'listaEventoExterno': listaEventoExterno})
-
-def exibirincidenteinterno(request):
-    listaIncidenteInterno = IncidenteInterno.objects.all()
-    name = 'Lista de Inicidente Interno Cadastrado.'
-    return render(request, "minhaAppProjetoFinal2/exibirincidenteinterno.html", {'nome': name, 'listaIncidenteInterno': listaIncidenteInterno})
-
-def exibirlotacao(request):
-    name='Você pode me alterar na view.'
-    return render(request, "minhaAppProjetoFinal2/exibirlotacao.html", {'nome':name})
-
-def exibirRecomendacao(request):
-    recomendacao = Recomendacao.objects.all()
-    name = 'Lista de Recomendacao Cadastrado.'
-    return render(request, "minhaAppProjetoFinal2/exibirRecomendacao.html", {'nome': name, 'listaRecomendacao': recomendacao})
-
-def exibirComentario(request):
-    comentario = Comentario.objects.all()
-    name = 'Lista de Comentário Cadastrado.'
-    return render(request, "minhaAppProjetoFinal2/exibirComentario.html", {'nome': name, 'listaComentario': comentario})
 
 def itensDeConsumo(request):
     if request.POST:
@@ -184,18 +138,6 @@ def exibirItens(request):
 
     return render(request, "minhaAppProjetoFinal2/exibirItens.html", {'filiais': filiais, 'itens_consumo': itens_consumo})
 
-def editarincidenteinterno(request, pk):
-    incidente = get_object_or_404(IncidenteInterno, pk=pk)
-
-    if request.method == 'POST':
-        form = formPostagemCadastroIncidenteInterno(request.POST, instance=incidente)
-        if form.is_valid():
-            form.save()
-            return redirect('cadastroincidenteinterno')  # Redirecione para a página de listagem de incidentes internos ou outra página adequada após a edição
-
-    form = formPostagemCadastroIncidenteInterno(instance=incidente)
-    return render(request, 'minhaAppProjetoFinal2/editarincidenteinterno.html', {'formulario': form})
-
 def associacaoUsuarios(request):
     if request.POST:
         form = formPostagemCadastroAssociacaoUsuarioUsuario(request.POST)
@@ -209,15 +151,6 @@ def associacaoUsuarios(request):
     formularioUsuarios = formPostagemCadastroAssociacaoUsuarioUsuario()
     
     return render(request, "minhaAppProjetoFinal2/associacaoUsuarios.html", {'formulario':formularioUsuarios})
-
-def excluirIncidente(request, pk):
-    incidente = get_object_or_404(IncidenteInterno, idIncidente=pk)
-
-    if request.method == 'POST':
-        incidente.delete()
-        return redirect('listar_incidentes_internos')  # Redirecione para a página de listagem de incidentes internos ou outra página adequada após a exclusão
-
-    return render(request, "minhaAppProjetoFinal2/excluirIncidente.html", {'incidente': incidente})
 
 def burrito(request):
     nome_item = "Burrito"  # Substitua "Arroz" pelo nome do item específico que você deseja exibir
